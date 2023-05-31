@@ -1,0 +1,17 @@
+{
+  "base": {
+    "project": "${JOB_BASE_NAME}",
+    "environment": "test env",
+    "comment": "API Tests",
+    "reportLink": "${BUILD_URL}",
+    "language": "en",
+    "messenger": "telegram",
+    "allureFolder": "allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "6166034125:AAHRukY-sLbFePH03jaQFL_bG1r73gEjG7Y",
+    "chat": "191619465",
+    "replyTo": ""
+  }
+}
