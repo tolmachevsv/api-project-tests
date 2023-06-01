@@ -14,7 +14,9 @@ There are API Tests for api methods of Pet Store and includes next cases:
 
 ## To launch API tests with terminal you need to enter the command:
 
-```gradle clean test```
+```
+gradle clean test
+```
 
 ## Launching with Jenkins:
 ![Jenkins](https://github.com/tolmachevsv/api-project-tests/assets/46191990/9ecb453e-a5fb-4278-ae2f-24aefe5940e7)
