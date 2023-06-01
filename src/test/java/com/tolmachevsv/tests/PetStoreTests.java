@@ -7,6 +7,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -19,7 +20,7 @@ public class PetStoreTests extends TestBase {
 
     @AllureId("21357")
     @DisplayName("Успешное создание нового питомца")
-    @Tag("critical")
+    @Tags({@Tag("rest"), @Tag("regress")})
     @Feature("Pet Store")
     @Owner("tolmachevsv")
     @Test
