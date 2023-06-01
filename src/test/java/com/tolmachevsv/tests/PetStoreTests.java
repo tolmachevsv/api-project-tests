@@ -1,5 +1,6 @@
 package com.tolmachevsv.tests;
 
+import com.tolmachevsv.annotations.Layer;
 import com.tolmachevsv.lombok.ResourceData;
 import com.tolmachevsv.specs.Specs;
 import io.qameta.allure.AllureId;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Tag("rest")
+@Layer("rest")
 public class PetStoreTests extends TestBase {
 
     @AllureId("21357")
