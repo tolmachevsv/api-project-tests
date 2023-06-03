@@ -1,5 +1,6 @@
 package com.tolmachevsv.specs;
 
+import com.tolmachevsv.config.ConfigHelper;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
@@ -9,8 +10,8 @@ import static io.restassured.RestAssured.with;
 public class Specs {
 
     public static RequestSpecification request = with()
-            .baseUri("https://petstore.swagger.io")
-            .basePath("/v2")
+            .baseUri(ConfigHelper.getBaseURL())
+            .basePath(ConfigHelper.getBasePath())
             .log().uri()
             .filter(customLogFilter().withCustomTemplates())
             .contentType(ContentType.JSON);

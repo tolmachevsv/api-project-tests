@@ -1,19 +1,17 @@
 package com.tolmachevsv.tests;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
+import com.tolmachevsv.restassured.RestAssuredSteps;
 import org.junit.jupiter.api.BeforeAll;
 
 public class TestBase {
+    static RestAssuredSteps restAssured;
+    static final String CREATE_PET = "src/test/resources/json/createPet.json";
+    static final String CREATE_ORDER = "src/test/resources/json/createOrder.json";
+    static final String CREATE_USER = "src/test/resources/json/createUser.json";
+    static final String UPDATE_PET = "src/test/resources/json/updatePet.json";
 
     @BeforeAll
-    static void setUp() {
-        String createOrder = "src/test/resources/json/createOrder.json";
-        String createPet = "src/test/resources/json/createPet.json";
-        String createUser = "src/test/resources/json/createUser.json";
-        String updatePet = "src/test/resources/json/updatePet.json";
-
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        DriverSettings.configure();
+    public static void init() {
+        restAssured = new RestAssuredSteps();
     }
 }
