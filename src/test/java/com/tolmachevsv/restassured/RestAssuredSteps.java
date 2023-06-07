@@ -2,6 +2,7 @@ package com.tolmachevsv.restassured;
 
 import com.tolmachevsv.lombok.ResourceData;
 import com.tolmachevsv.specs.Specs;
+import io.qameta.allure.Step;
 
 import java.io.File;
 
@@ -9,6 +10,7 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class RestAssuredSteps {
 
+    @Step("POST request for creating a new pet")
     public void createNewPet(final String createPet) {
         Specs.request.
                 body(new File(createPet)).
@@ -21,6 +23,7 @@ public class RestAssuredSteps {
                 body("status", is("available"));
     }
 
+    @Step("POST request for creating a new pet with using Lombok")
     public ResourceData CreateNewPetWithLombok(final String createPet) {
         return
                 Specs.request.
@@ -33,6 +36,7 @@ public class RestAssuredSteps {
                         extract().as(ResourceData.class);
     }
 
+    @Step("POST request for creating a new pet with invalid data")
     public void createNewPetWithInvalidData() {
         Specs.request.
                 body("{\"id\": \"dd\", \"category\": {\"id\": 5,\"name\": \"string\"}," +
@@ -46,6 +50,7 @@ public class RestAssuredSteps {
                 body("message", is("something bad happened"));
     }
 
+    @Step("GET request for getting the pet by id")
     public void getPetById() {
         Specs.request.
                 when().
@@ -55,6 +60,7 @@ public class RestAssuredSteps {
                 statusCode(200);
     }
 
+    @Step("PUT request for updating existing pet")
     public String updatePet(final String updatePet) {
         return
                 Specs.request.
@@ -67,6 +73,7 @@ public class RestAssuredSteps {
                         extract().path("category.name");
     }
 
+    @Step("POST request for creating a new order for pet")
     public Integer addNewOrderForPet(final String createOrder) {
         return
                 Specs.request.
@@ -78,6 +85,7 @@ public class RestAssuredSteps {
                         extract().path("id");
     }
 
+    @Step("DELETE request to delete existing pet")
     public void deletePetOrder() {
         Specs.request.
                 when().
@@ -87,6 +95,7 @@ public class RestAssuredSteps {
                 statusCode(200);
     }
 
+    @Step("DELETE request to delete an non-existent pet")
     public void deleteNotFoundOrder() {
         Specs.request.
                 when().
@@ -97,6 +106,7 @@ public class RestAssuredSteps {
                 body("message", is("Order Not Found"));
     }
 
+    @Step("POST request to create a new user")
     public void createNewUser(final String createUser) {
         Specs.request.
                 body(new File(createUser)).
@@ -108,6 +118,7 @@ public class RestAssuredSteps {
                 body("message", is("666"));
     }
 
+    @Step("GET request to get a user by status")
     public void getUsersByStatus() {
         Specs.request.
                 when().

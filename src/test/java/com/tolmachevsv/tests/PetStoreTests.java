@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -31,9 +32,14 @@ public class PetStoreTests extends TestBase {
     public void createNewPetWithLombok() {
         ResourceData pet = restAssured.CreateNewPetWithLombok(CREATE_PET);
 
-        assertEquals(66, pet.getId());
-        assertEquals("available", pet.getStatus());
-        assertEquals("string", pet.getCategory().getName());
+        step(String.format("Check if pet ID '%s' has a correct value", pet.getId()), () ->
+            assertEquals(66, pet.getId()));
+
+        step(String.format("Check if pet status is '%s'", pet.getStatus()), () ->
+                assertEquals("available", pet.getStatus()));
+
+        step(String.format("Check if pet category has value '%s'", pet.getCategory().getName()), () ->
+                assertEquals("string", pet.getCategory().getName()));
     }
 
     @AllureId("21353")
@@ -57,7 +63,8 @@ public class PetStoreTests extends TestBase {
     public void updatePet() {
         String categoryName = restAssured.updatePet(UPDATE_PET);
 
-        assertThat(categoryName).isEqualTo("update");
+        step("Check if category name has a valid value", () ->
+                assertThat(categoryName).isEqualTo("update"));
     }
 
     @AllureId("21351")
@@ -65,9 +72,10 @@ public class PetStoreTests extends TestBase {
     @Tag("critical")
     @Test
     public void addNewOrderForPet() {
-        Integer petId = restAssured.addNewOrderForPet(CREATE_ORDER);
+        Integer orderId = restAssured.addNewOrderForPet(CREATE_ORDER);
 
-        assertEquals(64, petId);
+        step(String.format("Check if order ID has a value '%s'", orderId), () ->
+            assertEquals(64, orderId));
     }
 
     @AllureId("21349")
