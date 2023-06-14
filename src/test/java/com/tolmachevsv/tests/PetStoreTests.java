@@ -25,10 +25,10 @@ public class PetStoreTests extends TestBase {
         restAssured.createNewPet(CREATE_PET);
     }
 
+    @Test
     @AllureId("21354")
     @DisplayName("Успешное создание нового питомца с применением Lombok")
     @Tag("critical")
-    @Test
     public void createNewPetWithLombok() {
         ResourceData pet = restAssured.CreateNewPetWithLombok(CREATE_PET);
 
@@ -42,24 +42,24 @@ public class PetStoreTests extends TestBase {
                 assertEquals("string", pet.getCategory().getName()));
     }
 
+    @Test
     @AllureId("21353")
     @DisplayName("Создание нового питомца c невалидным запросом")
     @Tag("critical")
-    @Test
     public void createNewPetWithInvalidData() {
         restAssured.createNewPetWithInvalidData();
     }
 
+    @Test
     @AllureId("21355")
     @DisplayName("Успешный запрос существующего питомца по id")
-    @Test
     public void getPetById() {
         restAssured.getPetById();
     }
 
+    @Test
     @AllureId("21348")
     @DisplayName("Успешное изменение информации существующего питомца")
-    @Test
     public void updatePet() {
         String categoryName = restAssured.updatePet(UPDATE_PET);
 
@@ -67,10 +67,10 @@ public class PetStoreTests extends TestBase {
                 assertThat(categoryName).isEqualTo("update"));
     }
 
+    @Test
     @AllureId("21351")
     @DisplayName("Успешное добавление заказа для питомца")
     @Tag("critical")
-    @Test
     public void addNewOrderForPet() {
         Integer orderId = restAssured.addNewOrderForPet(CREATE_ORDER);
 
@@ -78,33 +78,33 @@ public class PetStoreTests extends TestBase {
             assertEquals(64, orderId));
     }
 
+    @Test
     @AllureId("21349")
     @DisplayName("Успешное удаление заказа для существующего питомца")
     @Tag("critical")
-    @Test
     public void deletePetOrder() {
         restAssured.deletePetOrder();
     }
 
+    @Test
     @AllureId("21356")
     @DisplayName("Заказ не найден при удалении заказа для существующего питомца")
     @Tag("critical")
-    @Test
     public void deleteNotFoundOrder() {
         restAssured.deleteNotFoundOrder();
     }
 
+    @Test
     @AllureId("21352")
     @DisplayName("Успешное создание нового пользователя")
-    @Test
     public void createNewUser() {
         restAssured.createNewUser(CREATE_USER);
     }
 
+    @Test
     @AllureId("21350")
     @DisplayName("Успешный запрос на получение информации о пользователе по статусу")
     @Tag("critical")
-    @Test
     public void getUsersByStatus() {
         restAssured.getUsersByStatus();
     }
