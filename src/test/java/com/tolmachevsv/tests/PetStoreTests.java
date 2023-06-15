@@ -18,9 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Layer("rest")
 public class PetStoreTests extends TestBase {
 
+    @Test
     @AllureId("21357")
     @DisplayName("Успешное создание нового питомца")
-    @Test
     public void createNewPet() {
         restAssured.createNewPet(CREATE_PET);
     }
